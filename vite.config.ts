@@ -6,7 +6,9 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 // server is opened from a phone on the local network (secure context required).
 export default defineConfig(({ mode }) => ({
   base: './',
-  plugins: mode === 'https' ? [basicSsl()] : [],
+  plugins: [
+    ...(mode === 'https' ? [basicSsl()] : []),
+  ],
   server: {
     host: mode === 'https' ? true : undefined,
   },
